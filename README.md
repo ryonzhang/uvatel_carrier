@@ -1,12 +1,12 @@
-###What is it about?
+### What is it about?
 This repo is a golang service for uvatel clients which previously resides inside the juvo repo, since the courier concept will remove the uvatel engine entirely, it is a good practice to seperate the demo service into another repository.
-###How to start it?
+### How to start it?
 This service is built on beego framework, by running the following command, the server can be started
 `bee run`
-###Where can I check APIs?
+### Where can I check APIs?
 This repo supports autogenerating API docs, by running `bee run -downdoc=true -gendoc=true .` and go to `:8080/swagger/`, you can see the docs
-###Demo of API endpoints
-####Create a User
+### Demo of API endpoints
+#### Create a User
 Post `http://localhost:8080/user`
 ```cassandraql
 {
@@ -34,7 +34,7 @@ You are expecting to get
   }
 }
 ```
-####Insert a Package
+#### Insert a Package
 Post `http://localhost:8080/package`
 ```cassandraql
 {
@@ -64,7 +64,7 @@ You are expecting to get
   }
 }
 ```
-####Add a Package to a User
+#### Add a Package to a User
 Post `http://localhost:8080/user/1234/package/trial4`
 You are expecting to get
 ```cassandraql
@@ -102,7 +102,7 @@ You are expecting to get
   }
 }
 ```
-####Create an account
+#### Create an account
 Post `http://localhost:8080/account`
 ```cassandraql
 {
@@ -126,7 +126,7 @@ You are expecting to get
   }
 }
 ```
-####Deduct balance from an account
+#### Deduct balance from an account
 Post `http://localhost:8080/balance/deduct`
 ```cassandraql
 {
@@ -150,7 +150,7 @@ You are expecting to get
   }
 }
 ```
-####Add balance from an account
+#### Add balance from an account
 Post `http://localhost:8080/balance/add`
 ```cassandraql
 {
@@ -174,7 +174,7 @@ You are expecting to get
   }
 }
 ```
-####Set balance from an account
+#### Set balance from an account
 Post `http://localhost:8080/balance/add`
 ```cassandraql
 {

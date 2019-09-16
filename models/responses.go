@@ -19,6 +19,12 @@ type PackageResponse struct {
 	Error Error `json:"error"`
 }
 
+type UserPackagesResponse struct {
+	Data []*UserPackage `json:"data"`
+	Code int `json:"code"`
+	Error Error `json:"error"`
+}
+
 type UserPackageResponse struct {
 	Data UserPackage `json:"data"`
 	Code int `json:"code"`

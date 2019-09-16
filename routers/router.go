@@ -18,6 +18,7 @@ func init() {
 
 	beego.Router("/package/", &controllers.PackageController{}, "post:InsertPackage")
 	beego.Router("/package/:name", &controllers.PackageController{}, "get:GetPackage")
+	beego.Router("/packages/:msisdn", &controllers.PackageController{}, "get:GetPackages")
 	beego.Router("/user/:msisdn/package/:name", &controllers.PackageController{}, "post:AddPackageToUser")
 
 	ns :=beego.NewNamespace("/v1/",

@@ -3,6 +3,7 @@ package services
 import (
 	"github.com/astaxie/beego/orm"
 	"github.com/ryonzhang/uvatel_carrier/models"
+	"log"
 )
 
 func InsertPackage(request models.Package) (pack models.Package,err error) {
@@ -30,5 +31,17 @@ func AddPackageToUser(pack models.Package,user models.User) (userpack models.Use
 	o := orm.NewOrm()
 	o.Using("default")
 	_,err = o.Insert(&userpack)
+	return
+}
+func GetPackages(user models.User) (userpacks []*models.UserPackage,err error){
+	user,err=GetUser(user)
+	if err!=nil{
+		return
+	}
+	o := orm.NewOrm()
+	o.Using("default")
+
+	num, err := o.QueryTable(new(models.UserPackage)).Filter("User", user).All(&userpacks)
+	log.Print(num," of packages found for user")
 	return
 }

@@ -82,3 +82,22 @@ func (c *PackageController) AddPackageToUser() {
 	}
 	c.ServeJSON()
 }
+// @Title Get Packages of user
+// @Summary Insert package to database
+// @Description Get package from name
+// @Param   msisdn path    string  true    "caller ID"
+// @Success 200 {object} ZDT.ZDTMisc.CmsResponse
+// @Failure 400 Bad request
+// @Failure 404 Not found
+// @router /packages/:msisdn [get]
+func (c *PackageController) GetPackages() {
+	var request models.User
+	request.Msisdn,_= strconv.Atoi(c.Ctx.Input.Param(":msisdn"))
+	packs,err := services.GetPackages(request)
+	if err==nil{
+		c.Data["json"] = &models.UserPackagesResponse{Data:packs,Code:200,Error:models.Error{Message:""}}
+	}else{
+		c.Data["json"] = &models.UserPackagesResponse{Data:[]*models.UserPackage{},Code:500,Error:models.Error{Message:err.Error()}}
+	}
+	c.ServeJSON()
+}
